@@ -1,0 +1,65 @@
+:root{
+  --neo-bg:#e8ecf4;
+  --neo-surface:#e8ecf4;
+  --neo-surface-soft:#f0f4fc;
+  --neo-shadow-dark:#c5cad5;
+  --neo-shadow-light:#ffffff;
+  --neo-radius:24px;
+  --neo-radius-lg:32px;
+  --neo-radius-sm:14px;
+}
+
+/* Base background helper */
+.y-neumo-bg{background:var(--neo-bg);} 
+
+/* Raised surface (cards, panels) */
+.y-neumo-surface{
+  background:var(--neo-surface);
+  border-radius:var(--neo-radius);
+  box-shadow:10px 10px 20px var(--neo-shadow-dark), -10px -10px 20px var(--neo-shadow-light);
+}
+.y-neumo-surface-lg{
+  background:var(--neo-surface);
+  border-radius:var(--neo-radius-lg);
+  box-shadow:12px 12px 24px var(--neo-shadow-dark), -12px -12px 24px var(--neo-shadow-light);
+}
+
+/* Inset surface (badges, inputs) */
+.y-neumo-inset{
+  background:var(--neo-surface);
+  border-radius:var(--neo-radius-sm);
+  box-shadow:inset 6px 6px 12px var(--neo-shadow-dark), inset -6px -6px 12px var(--neo-shadow-light);
+}
+.y-neumo-inset-sm{
+  background:var(--neo-surface);
+  border-radius:12px;
+  box-shadow:inset 3px 3px 6px var(--neo-shadow-dark), inset -3px -3px 6px var(--neo-shadow-light);
+}
+
+/* Pills and chips */
+.y-pill{border-radius:9999px;}
+
+/* Buttons */
+.y-btn-primary{
+  color:#fff;
+  border-radius:18px;
+  padding:12px 18px;
+  background-image:linear-gradient(135deg, #7c3aed 0%, #a855f7 50%, #ec4899 100%);
+  box-shadow:0 20px 36px rgba(124,58,237,.35);
+  transition:transform .2s ease, box-shadow .2s ease;
+}
+.y-btn-primary:hover{transform:translateY(-2px); box-shadow:0 24px 44px rgba(124,58,237,.4)}
+
+.y-btn-secondary{
+  color:#0f172a;
+  border-radius:18px;
+  padding:12px 18px;
+}
+
+/* Focus ring accessible */
+.y-focus:focus{outline:3px solid rgba(99,102,241,.45); outline-offset:2px}
+
+/* Soft container gradient like in preview */
+.y-neumo-hero-grad{
+  background:linear-gradient(135deg, var(--neo-surface-soft) 0%, var(--neo-bg) 60%, #dde3ef 100%);
+}

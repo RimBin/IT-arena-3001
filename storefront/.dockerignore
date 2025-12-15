@@ -1,0 +1,38 @@
+# Node modules
+node_modules
+npm-debug.log
+
+# Next.js
+.next
+out
+.vercel
+
+# Environment files
+.env
+.env*.local
+
+# IDE files
+.vscode
+.idea
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Git
+.git
+.gitignore
+
+# Testing
+coverage
+*.test.js
+*.test.ts
+*.spec.js
+*.spec.ts
+
+# Logs
+logs
+*.log

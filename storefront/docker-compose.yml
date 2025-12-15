@@ -1,0 +1,12 @@
+name: yakiwood-storefront
+
+services:
+  app:
+    build: .
+    container_name: yakiwood-storefront-3001
+    ports:
+      - "3001:3001"
+    environment:
+      - PORT=3001
+      - NODE_ENV=production
+    restart: unless-stopped
