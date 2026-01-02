@@ -5,7 +5,7 @@ Modern web development platform for creating high-performance, SEO-optimized web
 ## Quick Start
 
 ```bash
-cd yakiwood-storefront
+cd storefront
 npm install
 npm run dev
 ```
@@ -16,7 +16,8 @@ Open http://localhost:3001 in your browser.
 
 ```
 IT-arena-3001/
-├── yakiwood-storefront/    # Next.js 15 frontend (port 3001)
+├── storefront/             # Next.js 15 frontend (port 3001)
+├── itarena/                # Renamed folder (was yakiwood-storefront)
 ├── .github/                # GitHub configuration
 ├── PORT.md                 # Development port guide
 └── README.md              # This file
@@ -44,7 +45,7 @@ IT-arena-3001/
 ### Storefront
 
 ```bash
-cd yakiwood-storefront
+cd storefront
 npm run dev
 ```
 
@@ -63,7 +64,7 @@ npm run dev
 
 ## Environment Variables
 
-Create `yakiwood-storefront/.env.local`:
+Create `storefront/.env.local`:
 
 ```env
 # Add any required environment variables here

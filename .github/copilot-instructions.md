@@ -13,7 +13,7 @@
 ### Starting Development
 
 ```bash
-cd yakiwood-storefront
+cd storefront
 npm install
 npm run dev
 ```
@@ -23,7 +23,7 @@ Server runs on **http://localhost:3001**
 ### Project Structure
 
 ```
-yakiwood-storefront/
+storefront/
 ├── app/                    # Next.js App Router
 │   ├── layout.tsx
 │   ├── page.tsx
