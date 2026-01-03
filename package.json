@@ -1,0 +1,10 @@
+{
+  "name": "it-arena-root",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "cd storefront && npm run dev",
+    "start": "cd storefront && npm start",
+    "build": "cd storefront && npm run build"
+  }
+}

@@ -163,31 +163,34 @@ const HeroSmartCity: FC = () => {
               </div>
 
               {/* Bottom Info Cards */}
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-2 gap-6 items-start">
                 
-                {/* Left Card - Raised */}
+                {/* Left Card - Large Rounded Raised */}
                 <div 
-                  className="y-neumo-surface p-6 transition-all duration-300"
+                  className="y-neumo-surface p-8 md:p-12 rounded-3xl transition-all duration-300 max-w-prose"
                 >
-                  <div className="flex items-center gap-3 mb-3">
+                  <div className="flex items-start gap-4">
                     <div 
-                      className="y-neumo-inset-sm y-pill w-12 h-12 flex items-center justify-center"
+                      className="y-neumo-inset y-pill w-14 h-14 flex items-center justify-center mt-1"
                     >
                       <span className="text-2xl">👤</span>
                     </div>
+                    <div>
+                      <p className="text-slate-600 text-sm mb-1">IT sprendimai</p>
+                      <p className="text-slate-700 text-base md:text-lg leading-relaxed">
+                        IT Arena – jūsų partneris kuriant šiuolaikiškus, efektyvius ir vizualiai įspūdingus sprendimus. Next.js, React, WordPress – panaudojame geriausias technologijas jūsų verslui.
+                      </p>
+                    </div>
                   </div>
-                  <p className="text-slate-600 text-xs mb-1">IT sprendimai</p>
-                  <p className="text-slate-700 text-sm leading-relaxed">
-                    IT Arena – jūsų partneris kuriant šiuolaikiškus, efektyvius ir vizualiai įspūdingus sprendimus. Next.js, React, WordPress – panaudojame geriausias technologijas jūsų verslui.
-                  </p>
                 </div>
 
-                {/* Right Card - Small Raised Circles */}
-                <div className="flex flex-col gap-4">
+                {/* Right Card - Offset Floating Circles */}
+                <div className="flex flex-col gap-6 -ml-6 md:-ml-12">
                   {[0, 1].map((i) => (
                     <div
                       key={i}
-                      className="y-neumo-surface y-pill w-16 h-16 flex items-center justify-center"
+                      className="y-neumo-surface y-pill w-16 h-16 md:w-20 md:h-20 flex items-center justify-center"
+                      style={{ transform: `translateY(${i * 40}px)` }}
                     >
                       <span className="text-2xl">{i === 0 ? '💡' : '👤'}</span>
                     </div>
