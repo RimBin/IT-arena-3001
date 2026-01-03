@@ -6,6 +6,24 @@ const HeroSmartCity: FC = () => {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const containerRef = useRef<HTMLDivElement>(null);
 
+  const testimonials = [
+    {
+      quote: 'Greita, aiški komunikacija ir rezultatas, kuris realiai pagerino konversiją.',
+      author: 'E. J., e‑komercija',
+    },
+    {
+      quote: 'TVS + Next.js sprendimas veikė sklandžiai nuo pirmos dienos — labai tvarkingas darbas.',
+      author: 'M. K., produktų komanda',
+    },
+    {
+      quote: 'Sutaupėme daug laiko optimizacijoms. Performance fokusas jautėsi kiekviename žingsnyje.',
+      author: 'A. P., marketingas',
+    },
+  ] as const;
+
+  const [testimonialIndex, setTestimonialIndex] = useState(0);
+  const [testimonialVisible, setTestimonialVisible] = useState(true);
+
   // Subtle parallax effect
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -20,12 +38,31 @@ const HeroSmartCity: FC = () => {
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
+  useEffect(() => {
+    const reducedMotion =
+      typeof window !== 'undefined' &&
+      window.matchMedia &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (reducedMotion) return;
+
+    const intervalId = window.setInterval(() => {
+      setTestimonialVisible(false);
+      window.setTimeout(() => {
+        setTestimonialIndex((prev) => (prev + 1) % testimonials.length);
+        setTestimonialVisible(true);
+      }, 450);
+    }, 8500);
+
+    return () => window.clearInterval(intervalId);
+  }, [testimonials.length]);
+
   return (
     <div 
       ref={containerRef}
       className="y-neumo-hero-grad w-full min-h-screen flex items-center justify-center p-8 font-sans relative overflow-hidden text-slate-900"
     >
-      <div className="w-full max-w-7xl mx-auto relative z-10">
+      <div className="w-full max-w-[1440px] mx-auto relative z-10">
         
         {/* Top Navigation - Raised */}
         <div className="flex justify-between items-center mb-12">
@@ -56,84 +93,103 @@ const HeroSmartCity: FC = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-12 gap-6">
+        <div className="grid grid-cols-12 gap-6 items-stretch">
           
           {/* Left Sidebar - Raised Cards */}
-          <div className="col-span-3 space-y-6">
+          <div className="col-span-12 md:col-span-3 lg:col-span-2 space-y-6 h-full">
             
-            {/* Support Card - Raised */}
-            <div 
-              className="y-neumo-surface-lg p-6 transition-all duration-300"
+            {/* Combined Metrics Card (same height as two stacked cards) */}
+            <div
+              className="y-neumo-surface-lg p-6 transition-all duration-300 relative overflow-hidden h-full min-h-[420px] flex flex-col"
               style={{
                 transform: `translate(${mousePos.x * 0.4}px, ${mousePos.y * 0.4}px)`,
               }}
             >
-              <div className="flex items-center gap-2 text-xs text-slate-500 mb-2">
-                <span className="w-2 h-2 bg-slate-400 rounded-full"></span>
-                <span className="w-2 h-2 bg-slate-400 rounded-full"></span>
-                <span className="w-2 h-2 bg-slate-400 rounded-full"></span>
-              </div>
-              <p className="text-slate-600 text-xs mb-1">Aktyvu</p>
-              <p className="text-slate-900 font-semibold mb-3">Projektų palaikymas</p>
-              <p className="text-slate-900 text-5xl font-bold">2K</p>
-            </div>
+              <img
+                src="/illustrations/services-flow.svg"
+                alt=""
+                aria-hidden="true"
+                className="pointer-events-none select-none absolute -right-12 -top-12 w-[300px] opacity-[0.09] blur-[0.3px] mix-blend-multiply z-0 y-illu-float"
+              />
+              <img
+                src="/illustrations/services-commerce.svg"
+                alt=""
+                aria-hidden="true"
+                className="pointer-events-none select-none absolute -right-16 -bottom-16 w-[300px] opacity-[0.08] blur-[0.35px] mix-blend-multiply z-0 y-illu-float-2"
+              />
 
-            {/* Streamline Card - Raised with Inner Pressed */}
-            <div 
-              className="y-neumo-surface-lg p-6 transition-all duration-300"
-              style={{
-                transform: `translate(${mousePos.x * 0.4}px, ${mousePos.y * 0.4}px)`,
-              }}
-            >
-              <p className="text-slate-600 text-xs mb-4">Efektyvumas</p>
-              <div 
-                className="y-neumo-inset y-pill w-32 h-32 mx-auto flex items-center justify-center relative"
-              >
-                <svg className="absolute inset-0 w-32 h-32 -rotate-90">
-                  <circle
-                    cx="64"
-                    cy="64"
-                    r="56"
-                    stroke="currentColor"
-                    strokeWidth="8"
-                    fill="none"
-                    strokeDasharray="220 352"
-                    strokeLinecap="round"
-                  />
-                </svg>
-                <p className="text-slate-900 text-3xl font-bold">+25</p>
+              <div className="relative z-10 flex flex-col h-full">
+                <div>
+                  <div className="flex items-center gap-2 text-xs text-slate-500 mb-2">
+                    <span className="w-2 h-2 bg-slate-400 rounded-full"></span>
+                    <span className="w-2 h-2 bg-slate-400 rounded-full"></span>
+                    <span className="w-2 h-2 bg-slate-400 rounded-full"></span>
+                  </div>
+                  <p className="text-slate-600 text-xs mb-1">Aktyvu</p>
+                  <p className="text-slate-900 font-semibold mb-3">Projektų palaikymas</p>
+                  <p className="text-slate-900 text-5xl font-bold">2K</p>
+                </div>
+
+                <div className="my-6 y-neumo-inset-sm y-pill h-1 w-full opacity-60" aria-hidden="true" />
+
+                <div className="mt-auto">
+                  <p className="text-slate-600 text-xs mb-4">Efektyvumas</p>
+                  <div className="y-neumo-inset y-pill w-32 h-32 mx-auto flex items-center justify-center relative">
+                    <svg className="absolute inset-0 w-32 h-32 -rotate-90 text-slate-900 motion-reduce:animate-none">
+                      <circle
+                        cx="64"
+                        cy="64"
+                        r="56"
+                        stroke="currentColor"
+                        strokeWidth="8"
+                        fill="none"
+                        strokeLinecap="round"
+                        strokeDasharray="352"
+                        strokeDashoffset="352"
+                        className="y-progress-arc"
+                      />
+                    </svg>
+                    <p className="text-slate-900 text-3xl font-bold">+25</p>
+                  </div>
+                </div>
               </div>
             </div>
 
             {/* Communities Card - Raised with Inner Bar */}
             <div 
-              className="y-neumo-surface-lg p-6 transition-all duration-300"
+              className="y-neumo-surface-lg p-6 transition-all duration-300 relative overflow-hidden"
               style={{
                 transform: `translate(${mousePos.x * 0.4}px, ${mousePos.y * 0.4}px)`,
               }}
             >
-              <div className="flex items-center gap-2 mb-3">
-                <span className="text-2xl">🏘️</span>
-                <div>
-                  <p className="text-slate-600 text-xs">Sujungtos</p>
-                  <p className="text-slate-900 font-semibold">bendruomenės</p>
+              <img
+                src="/illustrations/services-commerce.svg"
+                alt=""
+                aria-hidden="true"
+                className="pointer-events-none select-none absolute -right-14 -bottom-14 w-[290px] opacity-[0.10] blur-[0.3px] mix-blend-multiply z-0"
+              />
+              <div className="relative z-10">
+                <p className="text-slate-600 text-xs mb-3">Atsiliepimai</p>
+                <div
+                  className={
+                    "transition-all duration-500 min-h-[68px] " +
+                    (testimonialVisible
+                      ? "opacity-100 translate-y-0"
+                      : "opacity-0 translate-y-2")
+                  }
+                >
+                  <p className="text-slate-700 leading-snug y-clamp-2">
+                    “{testimonials[testimonialIndex].quote}”
+                  </p>
+                  <p className="text-slate-500 text-xs mt-3">— {testimonials[testimonialIndex].author}</p>
                 </div>
               </div>
-              <div 
-                className="y-neumo-inset-sm y-pill h-2 mb-2"
-              >
-                <div 
-                  className="h-full rounded-full bg-gradient-to-r from-slate-400 to-slate-200"
-                  style={{ width: '30%' }}
-                />
-              </div>
-              <p className="text-slate-900 text-4xl font-bold mt-4">30%</p>
             </div>
 
           </div>
 
           {/* Main Content Area - Large Raised Card */}
-          <div className="col-span-9">
+          <div className="col-span-12 md:col-span-9 lg:col-span-10">
             <div 
               className="y-neumo-surface-lg p-12 relative overflow-hidden transition-all duration-300 min-h-[600px] flex flex-col justify-between"
               style={{
@@ -142,61 +198,54 @@ const HeroSmartCity: FC = () => {
             >
               {/* Title */}
               <div>
-                <h1 className="heading-black text-slate-900 text-[1.3rem] sm:text-[2rem] md:text-[2.75rem] lg:text-[3.6rem] leading-tight md:leading-[0.96] font-extrabold mb-6">
+                <h1 className="heading-black text-slate-900 text-[1.6rem] sm:text-[2.5rem] md:text-[3.5rem] lg:text-[4.6rem] leading-[1.12] sm:leading-[1.08] md:leading-[1.04] lg:leading-[1.02] font-extrabold font-mono tracking-[0.08em] mb-6">
                   Skaitmeniniai ir AI<br />
                   sprendimai<br />
-                  <span className="block" style={{ color: '#caa0ff' }}>naujos kartos verslui.</span>
+                  <span className="block italic y-text-grad-violet">naujos kartos verslui.</span>
                 </h1>
 
-                {/* CTA Button — animated gradient border glow */}
-                <button
-                  type="button"
-                  className="y-cta-glow y-focus inline-flex items-center gap-3 mb-6 font-semibold text-slate-900 hover:text-slate-700 transition-colors"
-                >
-                  Susisiekti
-                  <span aria-hidden>→</span>
-                </button>
+                {/* CTA Button — moved to bottom area (see below) */}
 
-                <p className="text-slate-600 max-w-2xl">
-                  Performance-first digital and e-commerce solutions crafted with Next.js, React, and WordPress excellence.
-                </p>
+                
               </div>
 
-              {/* Bottom Info Cards */}
-              <div className="grid grid-cols-2 gap-6 items-start">
-                
-                {/* Left Card - Large Rounded Raised */}
-                <div 
-                  className="y-neumo-surface p-8 md:p-12 rounded-3xl transition-all duration-300 max-w-prose"
-                >
-                  <div className="flex items-start gap-4">
-                    <div 
-                      className="y-neumo-inset y-pill w-14 h-14 flex items-center justify-center mt-1"
+              {/* Bottom Content (match new screenshot layout) */}
+              <div className="mt-10">
+                <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-8">
+                  <div className="flex items-center gap-3 text-slate-900">
+                    <span
+                      aria-hidden
+                      className="y-neumo-inset-sm y-pill w-8 h-8 flex items-center justify-center text-slate-500"
                     >
-                      <span className="text-2xl">👤</span>
-                    </div>
-                    <div>
-                      <p className="text-slate-600 text-sm mb-1">Performance-first IT sprendimai</p>
-                      <p className="text-slate-700 text-base md:text-lg leading-relaxed">
-                        IT Arena – jūsų partneris kuriant našius, vizualiai įspūdingus sprendimus, kurie išlaiko „Performance First“ fokusą kiekviename UX palietime.
-                      </p>
-                    </div>
+                      <span className="w-3 h-3 rounded-full bg-slate-400 border border-slate-300" />
+                    </span>
+                    <span className="font-normal text-slate-600">Orientuota į rezultatą</span>
+                  </div>
+
+                  <div className="y-neumo-inset px-8 py-4 transition-all duration-300 group cursor-default">
+                    <p className="text-slate-900 text-lg md:text-xl leading-relaxed md:max-w-3xl group-hover:text-slate-700 group-hover:underline underline-offset-8 transition-colors">
+                      Kuriame verslo sistemas, el. parduotuves, svetaines ir automatizuotas AI bei reklamos valdymo sistemas, kurios didina pardavimus ir efektyvina procesus.
+                    </p>
+                  </div>
+
+                  <div className="md:pt-1">
+                    <button
+                      type="button"
+                      className="y-cta-glow y-focus inline-flex items-center gap-3 font-semibold text-slate-900 hover:text-slate-700 transition-colors px-8 py-3"
+                    >
+                      Susisiekti
+                      <span aria-hidden>→</span>
+                    </button>
                   </div>
                 </div>
 
-                {/* Right Card - Offset Floating Circles */}
-                <div className="flex flex-col gap-6 -ml-6 md:-ml-12">
-                  {[0, 1].map((i) => (
-                    <div
-                      key={i}
-                      className="y-neumo-surface y-pill w-16 h-16 md:w-20 md:h-20 flex items-center justify-center"
-                      style={{ transform: `translateY(${i * 40}px)` }}
-                    >
-                      <span className="text-2xl">{i === 0 ? '💡' : '👤'}</span>
-                    </div>
-                  ))}
+                <div className="mt-10 flex flex-wrap items-center gap-x-10 gap-y-3 text-slate-400">
+                  <span>SEO + LLM</span>
+                  <span aria-hidden>•</span>
+                  <span>E-komercija</span>
+                  <span aria-hidden>•</span>
+                  <span>AI sprendimai</span>
                 </div>
-
               </div>
 
             </div>

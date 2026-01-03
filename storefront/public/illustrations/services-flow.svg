@@ -1,0 +1,48 @@
+<svg width="640" height="400" viewBox="0 0 640 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="g" x1="120" y1="70" x2="520" y2="320" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#7c3aed"/>
+      <stop offset="0.5" stop-color="#a855f7"/>
+      <stop offset="1" stop-color="#ec4899"/>
+    </linearGradient>
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%" color-interpolation-filters="sRGB">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="0.6"/>
+    </filter>
+  </defs>
+
+  <!-- subtle grid -->
+  <g opacity="0.22">
+    <path d="M80 80H560" stroke="#CBD5E1" stroke-width="2" stroke-linecap="round"/>
+    <path d="M80 140H560" stroke="#CBD5E1" stroke-width="2" stroke-linecap="round"/>
+    <path d="M80 200H560" stroke="#CBD5E1" stroke-width="2" stroke-linecap="round"/>
+    <path d="M80 260H560" stroke="#CBD5E1" stroke-width="2" stroke-linecap="round"/>
+    <path d="M80 320H560" stroke="#CBD5E1" stroke-width="2" stroke-linecap="round"/>
+  </g>
+
+  <!-- flow links -->
+  <g filter="url(#soft)">
+    <path d="M170 120C240 90 285 95 335 125" stroke="url(#g)" stroke-width="6" stroke-linecap="round"/>
+    <path d="M335 125C410 165 440 220 470 280" stroke="url(#g)" stroke-width="6" stroke-linecap="round"/>
+    <path d="M335 125C375 110 445 110 505 135" stroke="url(#g)" stroke-width="6" stroke-linecap="round" opacity="0.75"/>
+    <path d="M170 120C230 165 250 230 240 285" stroke="url(#g)" stroke-width="6" stroke-linecap="round" opacity="0.7"/>
+  </g>
+
+  <!-- nodes -->
+  <g>
+    <circle cx="160" cy="120" r="34" fill="#F1F5F9"/>
+    <circle cx="160" cy="120" r="20" fill="url(#g)" opacity="0.85"/>
+
+    <circle cx="340" cy="125" r="42" fill="#F1F5F9"/>
+    <circle cx="340" cy="125" r="24" fill="url(#g)"/>
+
+    <circle cx="520" cy="140" r="34" fill="#F1F5F9"/>
+    <circle cx="520" cy="140" r="18" fill="url(#g)" opacity="0.8"/>
+
+    <circle cx="240" cy="290" r="34" fill="#F1F5F9"/>
+    <circle cx="240" cy="290" r="18" fill="url(#g)" opacity="0.75"/>
+
+    <circle cx="480" cy="285" r="40" fill="#F1F5F9"/>
+    <circle cx="480" cy="285" r="22" fill="url(#g)" opacity="0.9"/>
+  </g>
+
+</svg>

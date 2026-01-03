@@ -35,18 +35,18 @@ const HeroPixelSculpt: React.FC = () => {
               />
               <span>Performance First</span>
             </div>
-            <p className="text-[17px] text-[#3A3A3A] leading-relaxed max-w-[460px]">
+            <p className="text-[15px] text-[#3A3A3A] leading-relaxed max-w-[460px]">
               Kuriame verslo sistemas, el. parduotuves, svetaines ir automatizuotas AI bei reklamos valdymo sistemas, kurios
               didina pardavimus ir efektyvina procesus.
             </p>
             <Button size="md">Susisiekti</Button>
           </div>
 
-          <div className="flex items-center gap-6 text-[15px] text-[#7A7A7A] mb-[50px]">
+            <div className="flex items-center gap-6 text-[15px] text-slate-400 mb-[50px]">
             <span>SEO + LLM</span>
-            <span>•</span>
+            <span aria-hidden>•</span>
             <span>E‑komercija</span>
-            <span>•</span>
+            <span aria-hidden>•</span>
             <span>AI sprendimai</span>
           </div>
         </section>
