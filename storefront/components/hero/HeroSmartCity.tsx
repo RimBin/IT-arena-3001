@@ -50,7 +50,7 @@ const HeroSmartCity: FC = () => {
           </div>
 
           <div className="flex items-center">
-            <button type="button" className="y-btn-primary y-focus">
+            <button type="button" className="y-cta-glow y-focus font-semibold text-slate-900 hover:text-slate-700 transition-colors">
               Susisiekti
             </button>
           </div>
@@ -148,17 +148,17 @@ const HeroSmartCity: FC = () => {
                   <span className="block" style={{ color: '#caa0ff' }}>naujos kartos verslui.</span>
                 </h1>
 
-                {/* CTA Button — primary, placed above the description */}
+                {/* CTA Button — animated gradient border glow */}
                 <button
                   type="button"
-                  className="y-btn-primary y-focus inline-flex items-center gap-3 mb-6"
+                  className="y-cta-glow y-focus inline-flex items-center gap-3 mb-6 font-semibold text-slate-900 hover:text-slate-700 transition-colors"
                 >
                   Susisiekti
                   <span aria-hidden>→</span>
                 </button>
 
                 <p className="text-slate-600 max-w-2xl">
-                  Šiuolaikiškos, greitos ir efektyvios svetainės bei e. komercijos sprendimai.
+                  Performance-first digital and e-commerce solutions crafted with Next.js, React, and WordPress excellence.
                 </p>
               </div>
 
@@ -176,9 +176,9 @@ const HeroSmartCity: FC = () => {
                       <span className="text-2xl">👤</span>
                     </div>
                     <div>
-                      <p className="text-slate-600 text-sm mb-1">IT sprendimai</p>
+                      <p className="text-slate-600 text-sm mb-1">Performance-first IT sprendimai</p>
                       <p className="text-slate-700 text-base md:text-lg leading-relaxed">
-                        IT Arena – jūsų partneris kuriant šiuolaikiškus, efektyvius ir vizualiai įspūdingus sprendimus. Next.js, React, WordPress – panaudojame geriausias technologijas jūsų verslui.
+                        IT Arena – jūsų partneris kuriant našius, vizualiai įspūdingus sprendimus, kurie išlaiko „Performance First“ fokusą kiekviename UX palietime.
                       </p>
                     </div>
                   </div>
