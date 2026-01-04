@@ -96,7 +96,7 @@ const HeroSmartCity: FC = () => {
         <div className="grid grid-cols-12 gap-6 items-stretch">
           
           {/* Left Sidebar - Raised Cards */}
-          <div className="col-span-12 md:col-span-3 lg:col-span-2 space-y-6 h-full">
+          <div className="col-span-12 md:col-span-3 lg:col-span-2 space-y-6 h-full flex flex-col">
             
             {/* Combined Metrics Card (same height as two stacked cards) */}
             <div
@@ -157,7 +157,7 @@ const HeroSmartCity: FC = () => {
 
             {/* Communities Card - Raised with Inner Bar */}
             <div 
-              className="y-neumo-surface-lg p-6 transition-all duration-300 relative overflow-hidden"
+              className="y-neumo-surface-lg p-6 transition-all duration-300 relative overflow-hidden flex-none min-h-[100px]"
               style={{
                 transform: `translate(${mousePos.x * 0.4}px, ${mousePos.y * 0.4}px)`,
               }}
@@ -178,10 +178,10 @@ const HeroSmartCity: FC = () => {
                       : "opacity-0 translate-y-2")
                   }
                 >
-                  <p className="text-slate-700 leading-snug y-clamp-2">
+                  <p className="text-slate-600 leading-snug y-clamp-2">
                     “{testimonials[testimonialIndex].quote}”
                   </p>
-                  <p className="text-slate-500 text-xs mt-3">— {testimonials[testimonialIndex].author}</p>
+                  <p className="text-slate-400 text-xs mt-3">— {testimonials[testimonialIndex].author}</p>
                 </div>
               </div>
             </div>
@@ -189,9 +189,9 @@ const HeroSmartCity: FC = () => {
           </div>
 
           {/* Main Content Area - Large Raised Card */}
-          <div className="col-span-12 md:col-span-9 lg:col-span-10">
+          <div className="col-span-12 md:col-span-9 lg:col-span-10 h-full">
             <div 
-              className="y-neumo-surface-lg p-12 relative overflow-hidden transition-all duration-300 min-h-[600px] flex flex-col justify-between"
+              className="y-neumo-surface-lg p-12 relative overflow-hidden transition-all duration-300 min-h-[600px] h-full flex flex-col justify-between"
               style={{
                 transform: `translate(${mousePos.x * 0.2}px, ${mousePos.y * 0.2}px)`,
               }}
