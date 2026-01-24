@@ -99,7 +99,7 @@ export default function ProcessTimeline() {
                 <div key={index} className={`relative flex items-center ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'}`}>
                   {/* Content Card */}
                   <div className={`flex-1 ${isEven ? 'lg:pr-12' : 'lg:pl-12'}`}>
-                    <div className="p-8 rounded-3xl transition-all duration-300 hover:-translate-y-1"
+                    <div className="p-8 rounded-3xl transition-all duration-300"
                          style={{
                            background: '#e8ecf4',
                            boxShadow: '10px 10px 20px #c5cad5, -10px -10px 20px #ffffff'

@@ -3,7 +3,6 @@ import HeroPixelSculpt from "@/components/hero/HeroPixelSculpt";
 import HeroPremium from "@/components/hero/HeroPremium";
 import HeroSmartCity from "@/components/hero/HeroSmartCity";
 import ServicesGrid from "@/components/sections/ServicesGrid";
-import ServicesPixelSculpt from "@/components/sections/ServicesPixelSculpt";
 import BenefitsNeuro from "@/components/sections/BenefitsNeuro";
 import WhyUs from "@/components/sections/WhyUs";
 import CaseStudies from "@/components/sections/CaseStudies";
@@ -22,8 +21,8 @@ export default async function Home() {
         {/* Pixel Sculpt Hero (Disabled) */}
         {/* <HeroPixelSculpt /> */}
 
-        {/* Services Section - Pixel Sculpt Style */}
-        <ServicesPixelSculpt />
+        {/* Services Section */}
+        <ServicesGrid />
 
   {/* Benefits focused on UX/UI and neuromarketing */}
   <BenefitsNeuro />

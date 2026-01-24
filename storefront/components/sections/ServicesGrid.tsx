@@ -79,49 +79,44 @@ export default function ServicesGrid() {
   ];
 
   return (
-    <section className="relative py-20 bg-[#e8ecf4] overflow-hidden">
-      {/* Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#f0f4fc] via-[#e8ecf4] to-[#dde3ef] opacity-60" />
-
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="ia-section">
+      <div className="ia-card">
         {/* Header */}
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 y-neumo-inset y-pill mb-4">
-            <Code2 className="w-4 h-4 text-purple-500" />
-            <span className="text-sm font-medium text-slate-600">Pilnas Spektras</span>
+        <div className="mb-8">
+          <div className="ia-chip mb-4">
+            <Code2 className="w-4 h-4 text-slate-900" />
+            Pilnas spektras
           </div>
-          
-          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
-            Mūsų Paslaugos
-          </h2>
-          <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-            Nuo idėjos iki paleidimo – pilnas svetainės ir programų kūrimo ciklas su šiuolaikinėmis technologijomis
+
+          <h2 className="ia-title mb-3">Mūsų paslaugos</h2>
+          <p className="ia-lead">
+            Nuo idėjos iki paleidimo – pilnas svetainės ir programų kūrimo ciklas su šiuolaikinėmis technologijomis.
           </p>
         </div>
 
         {/* Services Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="ia-grid ia-grid-3">
           {services.map((service, index) => {
             const Icon = service.icon;
             return (
               <div
                 key={index}
-                className="group relative p-8 y-neumo-surface rounded-3xl transition-all duration-300 hover:-translate-y-2 cursor-pointer"
+                className="group ia-block transition-colors duration-200 hover:border-slate-300 hover:bg-slate-50"
               >
                 {/* Icon */}
-                <div className="mb-6">
-                  <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${service.gradient} p-0.5`}>
-                    <div className="w-full h-full rounded-2xl bg-[#e8ecf4] flex items-center justify-center group-hover:bg-transparent transition-colors duration-300">
-                      <Icon className="w-8 h-8 text-slate-700 group-hover:text-white transition-colors duration-300" />
+                <div className="mb-4">
+                  <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${service.gradient} p-0.5`}>
+                    <div className="w-full h-full rounded-xl bg-white flex items-center justify-center group-hover:bg-transparent transition-colors duration-200">
+                      <Icon className="w-6 h-6 text-slate-800 group-hover:text-white transition-colors duration-200" />
                     </div>
                   </div>
                 </div>
 
                 {/* Content */}
-                <h3 className="text-xl font-bold text-slate-900 mb-3">
+                <h3 className="ia-title-sm mb-2">
                   {service.title}
                 </h3>
-                <p className="text-slate-600 mb-6 leading-relaxed">
+                <p className="ia-text-muted mb-4 text-sm leading-relaxed">
                   {service.description}
                 </p>
 
@@ -130,7 +125,7 @@ export default function ServicesGrid() {
                   {service.features.map((feature, i) => (
                     <span
                       key={i}
-                      className="px-3 py-1 text-xs font-medium y-neumo-inset-sm text-slate-600"
+                      className="ia-chip"
                     >
                       {feature}
                     </span>
@@ -138,9 +133,9 @@ export default function ServicesGrid() {
                 </div>
 
                 {/* Hover Arrow */}
-                <div className="mt-6 flex items-center gap-2 text-purple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div className="mt-4 flex items-center gap-2 text-slate-900 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
                   <span className="text-sm font-semibold">Sužinok daugiau</span>
-                  <span className="transform group-hover:translate-x-1 transition-transform duration-300">→</span>
+                  <span className="transform group-hover:translate-x-1 transition-transform duration-200">→</span>
                 </div>
               </div>
             );

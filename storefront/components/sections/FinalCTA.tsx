@@ -57,7 +57,7 @@ export default function FinalCTA() {
         {/* CTA Buttons Grid */}
         <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
           {/* Calendar Booking */}
-          <div className="group relative p-8 bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl hover:bg-white/15 transition-all duration-300 hover:scale-105 hover:shadow-2xl cursor-pointer">
+          <div className="group relative p-8 bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl hover:bg-white/15 transition-all duration-300 hover:shadow-2xl cursor-pointer">
             <div className="absolute inset-0 bg-gradient-to-br from-purple-500/20 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             
             <div className="relative">
@@ -80,7 +80,7 @@ export default function FinalCTA() {
           </div>
 
           {/* WhatsApp / Messenger */}
-          <div className="group relative p-8 bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl hover:bg-white/15 transition-all duration-300 hover:scale-105 hover:shadow-2xl cursor-pointer">
+          <div className="group relative p-8 bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl hover:bg-white/15 transition-all duration-300 hover:shadow-2xl cursor-pointer">
             <div className="absolute inset-0 bg-gradient-to-br from-green-500/20 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             
             <div className="relative">
@@ -103,7 +103,7 @@ export default function FinalCTA() {
           </div>
 
           {/* Email / Form */}
-          <div className="group relative p-8 bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl hover:bg-white/15 transition-all duration-300 hover:scale-105 hover:shadow-2xl cursor-pointer">
+          <div className="group relative p-8 bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl hover:bg-white/15 transition-all duration-300 hover:shadow-2xl cursor-pointer">
             <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             
             <div className="relative">

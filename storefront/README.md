@@ -11,6 +11,10 @@ Headless WooCommerce storefront for IT Arena using Next.js App Router.
 ```
 cp .env.example .env.local
 # Edit .env.local and set NEXT_PUBLIC_WP_URL=https://your-wp-domain
+
+# (Optional) Chat widget via OpenAI
+# Set OPENAI_API_KEY to enable /api/chat
+# OPENAI_MODEL defaults to gpt-4o-mini
 ```
 
 2) Start dev server:

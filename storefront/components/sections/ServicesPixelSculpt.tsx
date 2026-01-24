@@ -93,7 +93,7 @@ const ServicesPixelSculpt: React.FC = () => {
             return (
               <div
                 key={index}
-                className={`group relative overflow-hidden rounded-[28px] border border-black/5 bg-[#111215] shadow-[0_8px_28px_rgba(0,0,0,0.25)] transition-all duration-500 hover:translate-y-[-2px] hover:shadow-[0_16px_48px_rgba(0,0,0,0.35)] ${span}`}
+                className={`group relative overflow-hidden rounded-[28px] border border-black/5 bg-[#111215] shadow-[0_8px_28px_rgba(0,0,0,0.25)] transition-all duration-500 hover:shadow-[0_16px_48px_rgba(0,0,0,0.35)] ${span}`}
               >
                 {/* Top plasma background */}
                 <div className={`relative overflow-hidden ${heroH}`}>

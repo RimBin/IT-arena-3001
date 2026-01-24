@@ -73,7 +73,7 @@ export default function CaseStudies() {
           {cases.map((project, index) => (
             <div
               key={index}
-              className="group relative bg-white rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
+              className="group relative bg-white rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500"
             >
               {/* Image Placeholder */}
               <div className={`relative h-48 bg-gradient-to-br ${project.gradient} flex items-center justify-center`}>

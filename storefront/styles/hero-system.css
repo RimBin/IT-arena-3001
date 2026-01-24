@@ -1,0 +1,197 @@
+@layer base {
+  :root {
+    /* Base colors */
+    --ia-bg: #ffffff;
+    --ia-surface: #ffffff;
+    --ia-surface-soft: #f8fafc;
+    --ia-border: #e2e8f0;
+    --ia-border-hover: #cbd5e1;
+
+    /* Text */
+    --ia-text-primary: #0f172a;
+    --ia-text-secondary: #334155;
+    --ia-text-muted: #475569;
+
+    /* Accent / actions */
+    --ia-accent: #0f172a;
+    --ia-accent-hover: #000000;
+    --ia-action-bg: #0f172a;
+    --ia-action-text: #ffffff;
+
+    /* Radius & shadow */
+    --ia-radius-lg: 1rem;
+    --ia-radius-md: 0.75rem;
+    --ia-radius-sm: 0.5rem;
+    --ia-shadow-soft: 0 1px 2px rgba(15, 23, 42, 0.05);
+    --ia-shadow-md: 0 8px 24px rgba(15, 23, 42, 0.08);
+
+    /* Layout */
+    --ia-section-space: 2rem;
+    --ia-container: 80rem;
+    --ia-gutter: 1rem;
+  }
+}
+
+@layer components {
+  /* General site design system utilities */
+  .ia-section {
+    margin-bottom: var(--ia-section-space);
+  }
+
+  .ia-container {
+    max-width: var(--ia-container);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--ia-gutter);
+    padding-right: var(--ia-gutter);
+  }
+
+  .ia-surface {
+    background: var(--ia-surface);
+    border: 1px solid var(--ia-border);
+    border-radius: var(--ia-radius-lg);
+    box-shadow: var(--ia-shadow-soft);
+  }
+
+  .ia-card {
+    border-radius: var(--ia-radius-lg);
+    border: 1px solid var(--ia-border);
+    background: var(--ia-surface);
+    padding: 1.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .ia-card {
+      padding: 2.5rem;
+    }
+  }
+
+  .ia-title {
+    font-weight: 800;
+    color: var(--ia-text-primary);
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    font-size: clamp(1.75rem, 2vw + 1.15rem, 3rem);
+  }
+
+  .ia-title-sm {
+    font-weight: 700;
+    color: var(--ia-text-primary);
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+    font-size: clamp(1.25rem, 1.2vw + 0.9rem, 1.875rem);
+  }
+
+  .ia-lead {
+    color: var(--ia-text-secondary);
+    font-size: 1rem;
+    line-height: 1.7;
+    max-width: 48rem;
+  }
+
+  @media (min-width: 768px) {
+    .ia-lead {
+      font-size: 1.125rem;
+    }
+  }
+
+  .ia-text-muted {
+    color: var(--ia-text-muted);
+  }
+
+  .ia-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .ia-btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--ia-radius-sm);
+    background: var(--ia-action-bg);
+    color: var(--ia-action-text);
+    font-weight: 600;
+    padding: 0.75rem 1.25rem;
+    transition: background 150ms ease;
+  }
+
+  .ia-btn-primary:hover {
+    background: var(--ia-accent-hover);
+  }
+
+  .ia-btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--ia-radius-sm);
+    border: 1px solid var(--ia-border);
+    color: var(--ia-text-primary);
+    font-weight: 600;
+    padding: 0.75rem 1.25rem;
+    transition: background 150ms ease, border-color 150ms ease;
+  }
+
+  .ia-btn-secondary:hover {
+    background: var(--ia-surface-soft);
+    border-color: var(--ia-border-hover);
+  }
+
+  .ia-grid {
+    display: grid;
+    gap: 0.75rem;
+  }
+
+  @media (min-width: 768px) {
+    .ia-grid-2 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .ia-grid-3 {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .ia-grid-4 {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .ia-grid-5 {
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+  }
+
+  .ia-block {
+    border-radius: var(--ia-radius-md);
+    border: 1px solid var(--ia-border);
+    padding: 1rem;
+    background: var(--ia-surface);
+  }
+
+  .ia-block-title {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--ia-text-primary);
+    margin-bottom: 0.25rem;
+  }
+
+  .ia-block-body {
+    font-size: 0.75rem;
+    color: var(--ia-text-muted);
+    line-height: 1.5;
+  }
+
+  .ia-chip {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border-radius: 999px;
+    border: 1px solid var(--ia-border);
+    padding: 0.5rem 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--ia-text-secondary);
+  }
+}

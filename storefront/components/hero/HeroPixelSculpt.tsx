@@ -71,7 +71,7 @@ const HeroPixelSculpt: React.FC = () => {
           {/* Right side - Course cards */}
           <div className="grid gap-6 sm:grid-cols-2">
             {/* Card 1 - 3D Modeling */}
-            <div className="group relative overflow-hidden rounded-3xl bg-white shadow-[0_20px_50px_rgba(139,92,246,0.15)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_28px_60px_rgba(139,92,246,0.22)]">
+            <div className="group relative overflow-hidden rounded-3xl bg-white shadow-[0_20px_50px_rgba(139,92,246,0.15)] transition-all duration-500 hover:shadow-[0_28px_60px_rgba(139,92,246,0.22)]">
               <div className="relative aspect-[3/4] overflow-hidden bg-gradient-to-br from-purple-100 to-pink-50">
                 <div className="absolute inset-0 flex items-center justify-center p-6">
                   {/* 3D visual placeholder */}
@@ -94,7 +94,7 @@ const HeroPixelSculpt: React.FC = () => {
             </div>
 
             {/* Card 2 - Architektūrinė vizualizacija */}
-            <div className="group relative overflow-hidden rounded-3xl bg-white shadow-[0_20px_50px_rgba(251,146,60,0.15)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_28px_60px_rgba(251,146,60,0.22)]">
+            <div className="group relative overflow-hidden rounded-3xl bg-white shadow-[0_20px_50px_rgba(251,146,60,0.15)] transition-all duration-500 hover:shadow-[0_28px_60px_rgba(251,146,60,0.22)]">
               <div className="relative aspect-[3/4] overflow-hidden bg-gradient-to-br from-amber-100 to-orange-50">
                 <div className="absolute inset-0 flex items-center justify-center p-6">
                   {/* Architectural visual placeholder */}
@@ -116,7 +116,7 @@ const HeroPixelSculpt: React.FC = () => {
             </div>
 
             {/* Card 3 - Game Design (spans bottom) */}
-            <div className="group relative overflow-hidden rounded-3xl bg-white shadow-[0_20px_50px_rgba(236,72,153,0.15)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_28px_60px_rgba(236,72,153,0.22)] sm:col-span-2">
+            <div className="group relative overflow-hidden rounded-3xl bg-white shadow-[0_20px_50px_rgba(236,72,153,0.15)] transition-all duration-500 hover:shadow-[0_28px_60px_rgba(236,72,153,0.22)] sm:col-span-2">
               <div className="relative aspect-[16/7] overflow-hidden bg-gradient-to-br from-pink-100 via-purple-50 to-pink-50">
                 <div className="absolute inset-0 flex items-center justify-center p-8">
                   {/* Game design visual placeholder */}

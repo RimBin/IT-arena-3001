@@ -3,6 +3,7 @@ import { Poppins, Montserrat, Outfit, Inter } from "next/font/google";
 import "./globals.css";
 import "../styles/neumorphism.css";
 import Footer from "@/components/Footer";
+import ChatWidget from "@/components/chat/ChatWidget";
 
 const poppins = Poppins({ weight: ["800"], subsets: ["latin"], variable: "--font-heading-a" });
 const montserrat = Montserrat({ weight: ["900"], subsets: ["latin"], variable: "--font-heading-b" });
@@ -19,6 +20,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="lt">
       <body className={`${poppins.variable} ${montserrat.variable} ${outfit.variable} ${inter.variable} antialiased`}>
         <main className="pt-0">{children}</main>
+        <ChatWidget />
         <Footer />
       </body>
     </html>

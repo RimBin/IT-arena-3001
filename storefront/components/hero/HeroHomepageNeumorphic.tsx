@@ -157,7 +157,7 @@ const HeroHomepageNeumorphic: React.FC = () => {
           {/* Bottom: Content cards */}
           <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {/* Card 1 */}
-            <div className="group overflow-hidden rounded-3xl bg-[#e8ecf4] transition-all duration-500 hover:-translate-y-2" style={{ boxShadow: '10px 10px 20px #c5cad5, -10px -10px 20px #ffffff' }}>
+            <div className="group overflow-hidden rounded-3xl bg-[#e8ecf4] transition-all duration-500" style={{ boxShadow: '10px 10px 20px #c5cad5, -10px -10px 20px #ffffff' }}>
               <div className="aspect-[4/3] overflow-hidden bg-gradient-to-br from-purple-100/50 via-pink-50/50 to-purple-50/50 p-8 transition-all duration-500 group-hover:scale-105">
                 <div className="flex h-full items-center justify-center">
                   <div className="relative">
@@ -174,7 +174,7 @@ const HeroHomepageNeumorphic: React.FC = () => {
             </div>
 
             {/* Card 2 */}
-            <div className="group overflow-hidden rounded-3xl bg-[#e8ecf4] transition-all duration-500 hover:-translate-y-2" style={{ boxShadow: '10px 10px 20px #c5cad5, -10px -10px 20px #ffffff' }}>
+            <div className="group overflow-hidden rounded-3xl bg-[#e8ecf4] transition-all duration-500" style={{ boxShadow: '10px 10px 20px #c5cad5, -10px -10px 20px #ffffff' }}>
               <div className="aspect-[4/3] overflow-hidden bg-gradient-to-br from-amber-100/50 via-orange-50/50 to-amber-50/50 p-8 transition-all duration-500 group-hover:scale-105">
                 <div className="flex h-full items-center justify-center">
                   <div className="relative">
@@ -191,7 +191,7 @@ const HeroHomepageNeumorphic: React.FC = () => {
             </div>
 
             {/* Card 3 */}
-            <div className="group overflow-hidden rounded-3xl bg-[#e8ecf4] transition-all duration-500 hover:-translate-y-2" style={{ boxShadow: '10px 10px 20px #c5cad5, -10px -10px 20px #ffffff' }}>
+            <div className="group overflow-hidden rounded-3xl bg-[#e8ecf4] transition-all duration-500" style={{ boxShadow: '10px 10px 20px #c5cad5, -10px -10px 20px #ffffff' }}>
               <div className="aspect-[4/3] overflow-hidden bg-gradient-to-br from-blue-100/50 via-cyan-50/50 to-blue-50/50 p-8 transition-all duration-500 group-hover:scale-105">
                 <div className="flex h-full items-center justify-center">
                   <div className="relative">

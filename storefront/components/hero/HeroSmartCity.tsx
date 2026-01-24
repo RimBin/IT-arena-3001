@@ -1,10 +1,11 @@
 "use client";
-import { FC, useState, useEffect, useRef } from 'react';
+import { FC, useState, useEffect, useLayoutEffect, useRef } from 'react';
 import Link from 'next/link';
 
 const HeroSmartCity: FC = () => {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const containerRef = useRef<HTMLDivElement>(null);
+  const [mounted, setMounted] = useState(false);
 
   const testimonials = [
     {
@@ -23,6 +24,17 @@ const HeroSmartCity: FC = () => {
 
   const [testimonialIndex, setTestimonialIndex] = useState(0);
   const [testimonialVisible, setTestimonialVisible] = useState(true);
+
+  // Small rotating project names shown under the metric
+  const projects = ['CityGrid', 'FlowTrack', 'MarketAI', 'AdOpt'] as const;
+  const [projectIndex, setProjectIndex] = useState(0);
+  const [projectVisible, setProjectVisible] = useState(true);
+
+  const [efficiencyValue, setEfficiencyValue] = useState(25);
+
+  useLayoutEffect(() => {
+    setMounted(true);
+  }, []);
 
   // Subtle parallax effect
   useEffect(() => {
@@ -57,15 +69,74 @@ const HeroSmartCity: FC = () => {
     return () => window.clearInterval(intervalId);
   }, [testimonials.length]);
 
+  // Rotation for the short project names below the metric
+  useEffect(() => {
+    const reducedMotion =
+      typeof window !== 'undefined' &&
+      window.matchMedia &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (reducedMotion) return;
+
+    const id = window.setInterval(() => {
+      setProjectVisible(false);
+      window.setTimeout(() => {
+        setProjectIndex((p) => (p + 1) % projects.length);
+        setProjectVisible(true);
+      }, 300);
+    }, 3500);
+
+    return () => window.clearInterval(id);
+  }, [projects.length]);
+
+  // Count-up for the +25 metric on initial load
+  useEffect(() => {
+    const reducedMotion =
+      typeof window !== 'undefined' &&
+      window.matchMedia &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (!mounted || reducedMotion) {
+      setEfficiencyValue(25);
+      return;
+    }
+
+    const target = 25;
+    const durationMs = 900;
+    const start = performance.now();
+    setEfficiencyValue(0);
+
+    let rafId = 0;
+    const tick = (now: number) => {
+      const t = Math.min(1, (now - start) / durationMs);
+      const eased = 1 - Math.pow(1 - t, 3);
+      setEfficiencyValue(Math.round(eased * target));
+      if (t < 1) rafId = window.requestAnimationFrame(tick);
+    };
+
+    rafId = window.requestAnimationFrame(tick);
+    return () => window.cancelAnimationFrame(rafId);
+  }, [mounted]);
+
   return (
     <div 
       ref={containerRef}
-      className="y-neumo-hero-grad w-full min-h-screen flex items-center justify-center p-8 font-sans relative overflow-hidden text-slate-900"
+      className="y-neumo-hero-grad w-full min-h-screen flex items-center lg:items-start justify-center px-8 pb-8 pt-10 lg:pt-6 font-sans relative overflow-hidden text-slate-900"
     >
       <div className="w-full max-w-[1440px] mx-auto relative z-10">
         
         {/* Top Navigation - Raised */}
-        <div className="flex justify-between items-center mb-12">
+        <div
+          className={
+            "flex justify-between items-center mb-12 " +
+            (mounted ? "y-reveal" : "")
+          }
+          style={
+            mounted
+              ? ({ ['--y-delay' as any]: '0ms' } as React.CSSProperties)
+              : undefined
+          }
+        >
           <div 
             className="y-neumo-surface y-pill px-6 py-3 transition-all duration-300"
             style={{
@@ -83,7 +154,10 @@ const HeroSmartCity: FC = () => {
           >
             <Link href="/" className="y-focus text-slate-700 hover:text-slate-900 text-sm font-semibold transition-colors">Pagrindinis</Link>
             <Link href="/about" className="y-focus text-slate-700 hover:text-slate-900 text-sm font-medium transition-colors">Apie mus</Link>
-            <Link href="/admin" className="y-focus text-slate-700 hover:text-slate-900 text-sm font-medium transition-colors">Administravimas</Link>
+            <Link href="/#paslaugos" className="y-focus text-slate-700 hover:text-slate-900 text-sm font-medium transition-colors">Paslaugos</Link>
+            <Link href="/blog" className="y-focus text-slate-700 hover:text-slate-900 text-sm font-medium transition-colors">Tinklaraštis</Link>
+            <Link href="/#kontaktai" className="y-focus text-slate-700 hover:text-slate-900 text-sm font-medium transition-colors">Kontaktai</Link>
+            <Link href="/#darbai" className="y-focus text-slate-700 hover:text-slate-900 text-sm font-medium transition-colors">Darbai</Link>
           </div>
 
           <div className="flex items-center">
@@ -93,18 +167,38 @@ const HeroSmartCity: FC = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-12 gap-6 items-stretch">
+        <div
+          className={
+            "grid grid-cols-12 gap-6 items-stretch " +
+            (mounted ? "" : "")
+          }
+        >
           
           {/* Left Sidebar - Raised Cards */}
-          <div className="col-span-12 md:col-span-3 lg:col-span-2 space-y-6 h-full flex flex-col">
+          <div
+            className={
+              "col-span-12 md:col-span-3 lg:col-span-2 space-y-6 h-full flex flex-col "
+            }
+          >
             
             {/* Combined Metrics Card (same height as two stacked cards) */}
             <div
-              className="y-neumo-surface-lg p-6 transition-all duration-300 relative overflow-hidden h-full min-h-[420px] flex flex-col"
-              style={{
-                transform: `translate(${mousePos.x * 0.4}px, ${mousePos.y * 0.4}px)`,
-              }}
+              className={mounted ? "y-reveal-diag-45 flex-1" : "flex-1"}
+              style={
+                mounted
+                  ? ({ ['--y-delay' as any]: '140ms' } as React.CSSProperties)
+                  : undefined
+              }
             >
+              <div
+                className={
+                  "y-neumo-surface-lg p-6 transition-all duration-300 relative overflow-hidden h-full min-h-[420px] flex flex-col " +
+                  (mounted ? "" : "")
+                }
+                style={{
+                  transform: `translate(${mousePos.x * 0.4}px, ${mousePos.y * 0.4}px)`,
+                }}
+              >
               <img
                 src="/illustrations/services-flow.svg"
                 alt=""
@@ -128,6 +222,13 @@ const HeroSmartCity: FC = () => {
                   <p className="text-slate-600 text-xs mb-1">Aktyvu</p>
                   <p className="text-slate-900 font-semibold mb-3">Projektų palaikymas</p>
                   <p className="text-slate-900 text-5xl font-bold">2K</p>
+
+                  {/* Rotating short project names */}
+                  <div className="mt-3 h-6">
+                    <p className={`text-slate-600 text-sm transition-all duration-300 ${projectVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-1'}`}>
+                      {projects[projectIndex]}
+                    </p>
+                  </div>
                 </div>
 
                 <div className="my-6 y-neumo-inset-sm y-pill h-1 w-full opacity-60" aria-hidden="true" />
@@ -147,41 +248,56 @@ const HeroSmartCity: FC = () => {
                         strokeDasharray="352"
                         strokeDashoffset="352"
                         className="y-progress-arc"
+                        style={
+                          mounted
+                            ? ({ ['--y-delay' as any]: '220ms' } as React.CSSProperties)
+                            : undefined
+                        }
                       />
                     </svg>
-                    <p className="text-slate-900 text-3xl font-bold">+25</p>
+                    <p className="text-slate-900 text-3xl font-bold">+{efficiencyValue}</p>
                   </div>
                 </div>
+              </div>
               </div>
             </div>
 
             {/* Communities Card - Raised with Inner Bar */}
-            <div 
-              className="y-neumo-surface-lg p-6 transition-all duration-300 relative overflow-hidden flex-none min-h-[100px]"
-              style={{
-                transform: `translate(${mousePos.x * 0.4}px, ${mousePos.y * 0.4}px)`,
-              }}
+            <div
+              className={mounted ? "y-reveal-diag-45" : ""}
+              style={
+                mounted
+                  ? ({ ['--y-delay' as any]: '300ms' } as React.CSSProperties)
+                  : undefined
+              }
             >
-              <img
-                src="/illustrations/services-commerce.svg"
-                alt=""
-                aria-hidden="true"
-                className="pointer-events-none select-none absolute -right-14 -bottom-14 w-[290px] opacity-[0.10] blur-[0.3px] mix-blend-multiply z-0"
-              />
-              <div className="relative z-10">
-                <p className="text-slate-600 text-xs mb-3">Atsiliepimai</p>
-                <div
-                  className={
-                    "transition-all duration-500 min-h-[68px] " +
-                    (testimonialVisible
-                      ? "opacity-100 translate-y-0"
-                      : "opacity-0 translate-y-2")
-                  }
-                >
-                  <p className="text-slate-600 leading-snug y-clamp-2">
-                    “{testimonials[testimonialIndex].quote}”
-                  </p>
-                  <p className="text-slate-400 text-xs mt-3">— {testimonials[testimonialIndex].author}</p>
+              <div 
+                className="y-neumo-surface-lg p-6 transition-all duration-300 relative overflow-hidden flex-none min-h-[100px]"
+                style={{
+                  transform: `translate(${mousePos.x * 0.4}px, ${mousePos.y * 0.4}px)`,
+                }}
+              >
+                <img
+                  src="/illustrations/services-commerce.svg"
+                  alt=""
+                  aria-hidden="true"
+                  className="pointer-events-none select-none absolute -right-14 -bottom-14 w-[290px] opacity-[0.10] blur-[0.3px] mix-blend-multiply z-0"
+                />
+                <div className="relative z-10">
+                  <p className="text-slate-600 text-xs mb-3">Atsiliepimai</p>
+                  <div
+                    className={
+                      "transition-all duration-500 min-h-[68px] " +
+                      (testimonialVisible
+                        ? "opacity-100 translate-y-0"
+                        : "opacity-0 translate-y-2")
+                    }
+                  >
+                    <p className="text-slate-600 leading-snug y-clamp-2">
+                      “{testimonials[testimonialIndex].quote}”
+                    </p>
+                    <p className="text-slate-400 text-xs mt-3">— {testimonials[testimonialIndex].author}</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -189,16 +305,38 @@ const HeroSmartCity: FC = () => {
           </div>
 
           {/* Main Content Area - Large Raised Card */}
-          <div className="col-span-12 md:col-span-9 lg:col-span-10 h-full">
-            <div 
-              className="y-neumo-surface-lg p-12 relative overflow-hidden transition-all duration-300 min-h-[600px] h-full flex flex-col justify-between"
-              style={{
-                transform: `translate(${mousePos.x * 0.2}px, ${mousePos.y * 0.2}px)`,
-              }}
+          <div
+            className={
+              "col-span-12 md:col-span-9 lg:col-span-10 h-full "
+            }
+          >
+            <div
+              className={mounted ? "y-reveal-diag-45" : ""}
+              style={
+                mounted
+                  ? ({ ['--y-delay' as any]: '460ms' } as React.CSSProperties)
+                  : undefined
+              }
             >
+              <div 
+                className="y-neumo-surface-lg p-12 relative overflow-hidden transition-all duration-300 min-h-[600px] h-full flex flex-col justify-between"
+                style={{
+                  transform: `translate(${mousePos.x * 0.2}px, ${mousePos.y * 0.2}px)`,
+                }}
+              >
               {/* Title */}
               <div>
-                <h1 className="heading-black text-slate-900 text-[1.6rem] sm:text-[2.5rem] md:text-[3.5rem] lg:text-[4.6rem] leading-[1.12] sm:leading-[1.08] md:leading-[1.04] lg:leading-[1.02] font-extrabold font-mono tracking-[0.08em] mb-6">
+                <h1
+                  className={
+                    "heading-black text-slate-900 text-[1.6rem] sm:text-[2.5rem] md:text-[3.5rem] lg:text-[4.6rem] leading-[1.12] sm:leading-[1.08] md:leading-[1.04] lg:leading-[1.02] font-extrabold font-mono tracking-[0.08em] mb-6 " +
+                    (mounted ? "y-reveal" : "")
+                  }
+                  style={
+                    mounted
+                      ? ({ ['--y-delay' as any]: '260ms' } as React.CSSProperties)
+                      : undefined
+                  }
+                >
                   Skaitmeniniai ir AI<br />
                   sprendimai<br />
                   <span className="block italic y-text-grad-violet">naujos kartos verslui.</span>
@@ -210,7 +348,17 @@ const HeroSmartCity: FC = () => {
               </div>
 
               {/* Bottom Content (match new screenshot layout) */}
-              <div className="mt-10">
+              <div
+                className={
+                  "mt-10 " +
+                  (mounted ? "y-reveal" : "")
+                }
+                style={
+                  mounted
+                    ? ({ ['--y-delay' as any]: '340ms' } as React.CSSProperties)
+                    : undefined
+                }
+              >
                 <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-8">
                   <div className="flex items-center gap-3 text-slate-900">
                     <span
@@ -239,7 +387,17 @@ const HeroSmartCity: FC = () => {
                   </div>
                 </div>
 
-                <div className="mt-10 flex flex-wrap items-center gap-x-10 gap-y-3 text-slate-400">
+                <div
+                  className={
+                    "mt-10 flex flex-wrap items-center gap-x-10 gap-y-3 text-slate-400 " +
+                    (mounted ? "y-reveal" : "")
+                  }
+                  style={
+                    mounted
+                      ? ({ ['--y-delay' as any]: '420ms' } as React.CSSProperties)
+                      : undefined
+                  }
+                >
                   <span>SEO + LLM</span>
                   <span aria-hidden>•</span>
                   <span>E-komercija</span>
@@ -248,6 +406,7 @@ const HeroSmartCity: FC = () => {
                 </div>
               </div>
 
+            </div>
             </div>
           </div>
 
