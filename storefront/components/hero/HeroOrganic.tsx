@@ -1,25 +1,9 @@
 "use client";
-import { useEffect, useRef } from "react";
-
 export default function HeroOrganic() {
-  const blobRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      if (!blobRef.current) return;
-      const x = (e.clientX / window.innerWidth) * 20 - 10;
-      const y = (e.clientY / window.innerHeight) * 20 - 10;
-      blobRef.current.style.transform = `translate(${x}px, ${y}px)`;
-    };
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, []);
-
   return (
     <section className="relative overflow-hidden py-20 md:py-32">
       {/* Organic background blob */}
       <div
-        ref={blobRef}
         className="absolute -top-1/2 -right-1/4 w-[800px] h-[800px] opacity-30 blur-3xl transition-transform duration-700 ease-out"
         style={{
           background: "radial-gradient(circle, rgba(147, 197, 253, 0.4) 0%, rgba(196, 181, 253, 0.2) 50%, transparent 70%)",

@@ -1,5 +1,5 @@
 "use client";
-import { FC, useState, useEffect, useRef } from 'react';
+import { FC, useState, useEffect } from 'react';
 
 type ColorTheme = 'blue' | 'purple' | 'green' | 'orange';
 type TimeOfDay = 'morning' | 'day' | 'evening' | 'night';
@@ -38,10 +38,8 @@ const colorThemes = {
 const HeroUltimate: FC = () => {
   const [colorTheme, setColorTheme] = useState<ColorTheme>('blue');
   const [timeOfDay, setTimeOfDay] = useState<TimeOfDay>('day');
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [blobPos, setBlobPos] = useState({ x: 50, y: 50 });
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
   
   const theme = colorThemes[colorTheme];
 
@@ -65,19 +63,6 @@ const HeroUltimate: FC = () => {
     if (saved && colorThemes[saved]) setColorTheme(saved);
   }, []);
 
-  // Subtle parallax effect
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      if (containerRef.current) {
-        const rect = containerRef.current.getBoundingClientRect();
-        const x = ((e.clientX - rect.left) / rect.width - 0.5) * 20; // Very subtle: max 10px movement
-        const y = ((e.clientY - rect.top) / rect.height - 0.5) * 20;
-        setMousePos({ x, y });
-      }
-    };
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
 
   // Organic blob animation
   useEffect(() => {
@@ -111,8 +96,7 @@ const HeroUltimate: FC = () => {
   };
 
   return (
-    <div 
-      ref={containerRef}
+    <div
       className="w-full min-h-screen flex items-center justify-center p-4 sm:p-8 font-sans relative overflow-hidden transition-colors duration-700"
       style={{ backgroundColor: theme.bg }}
     >
@@ -145,13 +129,8 @@ const HeroUltimate: FC = () => {
           ))}
         </div>
 
-        {/* Main Content with subtle parallax */}
-        <div
-          style={{
-            transform: `translate(${mousePos.x * 0.3}px, ${mousePos.y * 0.3}px)`,
-            transition: 'transform 0.3s ease-out',
-          }}
-        >
+        {/* Main Content */}
+        <div>
           {/* Header Card - Neumorphic style */}
           <div 
             className="rounded-3xl p-6 mb-6 transition-all duration-300"
@@ -200,9 +179,6 @@ const HeroUltimate: FC = () => {
                   boxShadow: hoveredCard === i
                     ? `inset 8px 8px 16px ${theme.light}, inset -8px -8px 16px #ffffff`
                     : `12px 12px 24px ${theme.light}, -12px -12px 24px #ffffff`,
-                  transform: hoveredCard === i 
-                    ? `translate(${mousePos.x * 0.5}px, ${mousePos.y * 0.5}px) scale(0.95)` 
-                    : `translate(${mousePos.x * 0.2}px, ${mousePos.y * 0.2}px)`,
                 }}
               >
                 <div 
@@ -255,7 +231,6 @@ const HeroUltimate: FC = () => {
                     boxShadow: hoveredCard === i + 10
                       ? `inset 6px 6px 12px ${theme.light}, inset -6px -6px 12px #ffffff`
                       : `6px 6px 12px ${theme.light}, -6px -6px 12px #ffffff`,
-                    transform: `translate(${mousePos.x * 0.1}px, ${mousePos.y * 0.1}px)`,
                     color: hoveredCard === i + 10 ? '#ffffff' : '#94a3b8',
                   }}
                 >
@@ -327,7 +302,6 @@ const HeroUltimate: FC = () => {
             style={{
               backgroundColor: theme.bg,
               boxShadow: `8px 8px 16px ${theme.light}, -8px -8px 16px #ffffff`,
-              transform: `translate(${mousePos.x * 0.1}px, ${mousePos.y * 0.1}px)`,
             }}
           >
             <h3 className="font-semibold mb-2" style={{ color: theme.primary }}>

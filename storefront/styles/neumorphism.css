@@ -211,10 +211,11 @@
 .y-cta-glow {
   position: relative;
   isolation: isolate;
-  background: var(--neo-surface);
+  background: linear-gradient(135deg, #eef2ff 0%, #f6eeff 45%, #f4f7ff 100%);
+  border: 1px solid rgba(124, 58, 237, 0.32);
+  box-shadow: 10px 10px 20px var(--neo-shadow-dark), -10px -10px 20px var(--neo-shadow-light), inset 0 0 0 1px rgba(124, 58, 237, 0.08);
   border-radius: 9999px;
   padding: 12px 24px;
-  box-shadow: 10px 10px 20px var(--neo-shadow-dark), -10px -10px 20px var(--neo-shadow-light);
   transition: all 0.3s ease;
 }
 

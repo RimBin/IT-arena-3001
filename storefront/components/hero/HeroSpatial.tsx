@@ -1,33 +1,7 @@
 "use client";
-import { useEffect, useRef } from "react";
-
 export default function HeroSpatial() {
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      if (!containerRef.current) return;
-      const cards = containerRef.current.querySelectorAll('.spatial-card');
-      const { clientX, clientY } = e;
-      const { innerWidth, innerHeight } = window;
-
-      cards.forEach((card, index) => {
-        const speed = (index + 1) * 0.5;
-        const x = ((clientX - innerWidth / 2) / innerWidth) * speed * 30;
-        const y = ((clientY - innerHeight / 2) / innerHeight) * speed * 30;
-        
-        (card as HTMLElement).style.transform = 
-          `translate3d(${x}px, ${y}px, ${index * 20}px) rotateY(${x * 0.05}deg) rotateX(${-y * 0.05}deg)`;
-      });
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
-
   return (
     <section 
-      ref={containerRef}
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
       style={{ perspective: '1500px' }}
     >

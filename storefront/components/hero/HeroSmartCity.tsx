@@ -1,10 +1,8 @@
 "use client";
-import { FC, useState, useEffect, useLayoutEffect, useRef } from 'react';
+import { FC, useState, useEffect, useLayoutEffect } from 'react';
 import Link from 'next/link';
 
 const HeroSmartCity: FC = () => {
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
-  const containerRef = useRef<HTMLDivElement>(null);
   const [mounted, setMounted] = useState(false);
 
   const testimonials = [
@@ -36,19 +34,6 @@ const HeroSmartCity: FC = () => {
     setMounted(true);
   }, []);
 
-  // Subtle parallax effect
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      if (containerRef.current) {
-        const rect = containerRef.current.getBoundingClientRect();
-        const x = ((e.clientX - rect.left) / rect.width - 0.5) * 10;
-        const y = ((e.clientY - rect.top) / rect.height - 0.5) * 10;
-        setMousePos({ x, y });
-      }
-    };
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
 
   useEffect(() => {
     const reducedMotion =
@@ -119,10 +104,7 @@ const HeroSmartCity: FC = () => {
   }, [mounted]);
 
   return (
-    <div 
-      ref={containerRef}
-      className="y-neumo-hero-grad w-full min-h-screen flex items-center lg:items-start justify-center px-8 pb-8 pt-10 lg:pt-6 font-sans relative overflow-hidden text-slate-900"
-    >
+    <div className="y-neumo-hero-grad w-full min-h-screen flex items-center lg:items-start justify-center px-8 pb-8 pt-10 lg:pt-6 font-sans relative overflow-hidden text-slate-900">
       <div className="w-full max-w-[1440px] mx-auto relative z-10">
         
         {/* Top Navigation - Raised */}
@@ -137,21 +119,11 @@ const HeroSmartCity: FC = () => {
               : undefined
           }
         >
-          <div 
-            className="y-neumo-surface y-pill px-6 py-3 transition-all duration-300"
-            style={{
-              transform: `translate(${mousePos.x * 0.2}px, ${mousePos.y * 0.2}px)`,
-            }}
-          >
+          <div className="y-neumo-surface y-pill px-6 py-3 transition-all duration-300">
             <span className="font-semibold">IT Arena</span>
           </div>
 
-          <div 
-            className="y-neumo-inset y-pill px-8 py-3 flex items-center gap-6 transition-all duration-300"
-            style={{
-              transform: `translate(${mousePos.x * 0.3}px, ${mousePos.y * 0.3}px)`,
-            }}
-          >
+          <div className="y-neumo-inset y-pill px-8 py-3 flex items-center gap-6 transition-all duration-300">
             <Link href="/" className="y-focus text-slate-700 hover:text-slate-900 text-sm font-semibold transition-colors">Pagrindinis</Link>
             <Link href="/about" className="y-focus text-slate-700 hover:text-slate-900 text-sm font-medium transition-colors">Apie mus</Link>
             <Link href="/#paslaugos" className="y-focus text-slate-700 hover:text-slate-900 text-sm font-medium transition-colors">Paslaugos</Link>
@@ -195,9 +167,6 @@ const HeroSmartCity: FC = () => {
                   "y-neumo-surface-lg p-6 transition-all duration-300 relative overflow-hidden h-full min-h-[420px] flex flex-col " +
                   (mounted ? "" : "")
                 }
-                style={{
-                  transform: `translate(${mousePos.x * 0.4}px, ${mousePos.y * 0.4}px)`,
-                }}
               >
               <img
                 src="/illustrations/services-flow.svg"
@@ -271,12 +240,7 @@ const HeroSmartCity: FC = () => {
                   : undefined
               }
             >
-              <div 
-                className="y-neumo-surface-lg p-6 transition-all duration-300 relative overflow-hidden flex-none min-h-[100px]"
-                style={{
-                  transform: `translate(${mousePos.x * 0.4}px, ${mousePos.y * 0.4}px)`,
-                }}
-              >
+              <div className="y-neumo-surface-lg p-6 transition-all duration-300 relative overflow-hidden flex-none min-h-[100px]">
                 <img
                   src="/illustrations/services-commerce.svg"
                   alt=""
@@ -318,12 +282,7 @@ const HeroSmartCity: FC = () => {
                   : undefined
               }
             >
-              <div 
-                className="y-neumo-surface-lg p-12 relative overflow-hidden transition-all duration-300 min-h-[600px] h-full flex flex-col justify-between"
-                style={{
-                  transform: `translate(${mousePos.x * 0.2}px, ${mousePos.y * 0.2}px)`,
-                }}
-              >
+              <div className="y-neumo-surface-lg p-12 relative overflow-hidden transition-all duration-300 min-h-[600px] h-full flex flex-col justify-between">
               {/* Title */}
               <div>
                 <h1
