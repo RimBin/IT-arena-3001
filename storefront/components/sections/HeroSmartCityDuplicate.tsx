@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { buttonClasses } from "@/components/ui/button";
 
 export default function HeroSmartCityDuplicate() {
   return (
@@ -68,7 +69,7 @@ export default function HeroSmartCityDuplicate() {
                   <div className="mt-10">
                     <Link
                       href="/#kontaktai"
-                      className="y-cta-glow y-focus inline-flex items-center gap-3 font-semibold text-slate-900 hover:text-slate-700 transition-colors px-10 py-3"
+                      className={buttonClasses({ variant: "cta", size: "md", className: "gap-3" })}
                     >
                       Susisiekti <span aria-hidden className="y-cta-icon">→</span>
                     </Link>
@@ -95,7 +96,7 @@ export default function HeroSmartCityDuplicate() {
                     <div className="mt-8">
                       <Link
                         href="/#kontaktai"
-                        className="y-cta-glow y-focus inline-flex items-center gap-3 font-semibold text-slate-900 hover:text-slate-700 transition-colors px-10 py-3 w-full justify-center"
+                        className={buttonClasses({ variant: "cta", size: "md", className: "gap-3 w-full justify-center" })}
                       >
                         Susisiekti <span aria-hidden className="y-cta-icon">→</span>
                       </Link>

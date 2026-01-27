@@ -47,7 +47,7 @@ export default function Header() {
       <div className={"mx-auto max-w-[1440px] px-6 pb-4 transition-all duration-300 " + (isScrolled ? "pt-0" : "pt-4")}>
         <div
           className={
-            "flex justify-between items-center mb-0 transition-all duration-300 " +
+            "h-20 flex justify-between items-center mb-0 transition-all duration-300 " +
             (isScrolled
               ? "bg-white/30 backdrop-blur-xl border border-white/40 rounded-2xl shadow-[0_14px_36px_rgba(16,24,40,0.12)]"
               : "")
@@ -104,9 +104,10 @@ export default function Header() {
           </div>
 
           <div className="flex items-center">
-            <button type="button" className="y-cta-glow y-focus font-semibold text-slate-900 hover:text-slate-700 transition-colors">
+            <Button type="button" variant="cta" size="md" className="gap-3">
               Susisiekti
-            </button>
+              <span aria-hidden className="y-cta-icon">→</span>
+            </Button>
           </div>
         </div>
       </div>

@@ -1,6 +1,7 @@
 "use client";
 import { FC, useState, useEffect, useLayoutEffect } from 'react';
 import Link from 'next/link';
+import { Button } from '@/components/ui/button';
 
 const HeroSmartCity: FC = () => {
   const [mounted, setMounted] = useState(false);
@@ -104,7 +105,7 @@ const HeroSmartCity: FC = () => {
   }, [mounted]);
 
   return (
-    <div className="y-neumo-hero-grad w-full min-h-screen flex items-center lg:items-start justify-center px-8 pb-8 pt-[80px] lg:pt-[80px] font-sans relative overflow-hidden text-slate-900">
+    <div className="y-neumo-hero-grad w-full min-h-screen flex items-center lg:items-start justify-center px-8 pb-8 pt-[200px] lg:pt-[200px] font-sans relative overflow-hidden text-slate-900">
       <div className="w-full max-w-[1440px] mx-auto relative z-10">
         
         <div
@@ -304,13 +305,10 @@ const HeroSmartCity: FC = () => {
                   </div>
 
                   <div className="md:pt-1">
-                    <button
-                      type="button"
-                      className="y-cta-glow y-focus inline-flex items-center gap-3 font-semibold text-slate-900 hover:text-slate-700 transition-colors px-8 py-3"
-                    >
+                    <Button type="button" variant="cta" size="md" className="gap-3">
                       Susisiekti
-                      <span aria-hidden>→</span>
-                    </button>
+                      <span aria-hidden className="y-cta-icon">→</span>
+                    </Button>
                   </div>
                 </div>
 

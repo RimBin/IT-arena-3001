@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
+import { Button } from "@/components/ui/button";
 
 type ChatRole = "user" | "assistant";
 
@@ -76,15 +77,17 @@ export default function ChatWidget() {
   return (
     <div className="fixed bottom-6 right-6 z-50">
       {!open ? (
-        <button
-          type="button"
-          className="y-cta-glow y-focus inline-flex items-center gap-3 text-slate-900 font-semibold"
-          onClick={() => setOpen(true)}
-          aria-label="Atidaryti pokalbį"
-        >
-          Pokalbis
-          <span aria-hidden className="y-cta-icon">→</span>
-        </button>
+          <Button
+            type="button"
+            variant="cta"
+            size="md"
+            className="gap-3"
+            onClick={() => setOpen(true)}
+            aria-label="Atidaryti pokalbį"
+          >
+            Pokalbis
+            <span aria-hidden className="y-cta-icon">→</span>
+          </Button>
       ) : (
         <div className="y-neumo-surface-lg w-[360px] overflow-hidden">
           <div className="flex items-center justify-between gap-3 px-4 py-3">

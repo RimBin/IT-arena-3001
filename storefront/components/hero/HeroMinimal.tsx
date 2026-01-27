@@ -1,5 +1,7 @@
 "use client";
 
+import { Button } from "@/components/ui/button";
+
 export default function HeroMinimal() {
   return (
     <section className="relative py-32 md:py-40">
@@ -30,13 +32,10 @@ export default function HeroMinimal() {
 
           {/* Single prominent CTA */}
           <div className="pt-8">
-            <button className="group relative px-12 py-5 text-lg font-medium">
-              <div className="absolute inset-0 bg-slate-900 rounded-full group-hover:scale-105 transition-transform duration-300" />
-              <span className="relative text-white flex items-center gap-3">
-                Susisiekime
-                <span className="w-8 h-px bg-white group-hover:w-12 transition-all duration-300" />
-              </span>
-            </button>
+            <Button variant="cta" size="lg" className="gap-3">
+              Susisiekime
+              <span aria-hidden className="y-cta-icon">→</span>
+            </Button>
           </div>
 
           {/* Minimal stats */}

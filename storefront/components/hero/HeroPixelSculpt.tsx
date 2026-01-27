@@ -39,7 +39,10 @@ const HeroPixelSculpt: React.FC = () => {
               Kuriame verslo sistemas, el. parduotuves, svetaines ir automatizuotas AI bei reklamos valdymo sistemas, kurios
               didina pardavimus ir efektyvina procesus.
             </p>
-            <Button size="md">Susisiekti</Button>
+            <Button size="md" variant="cta" className="gap-3">
+              Susisiekti
+              <span aria-hidden className="y-cta-icon">→</span>
+            </Button>
           </div>
 
             <div className="flex items-center gap-6 text-[15px] text-slate-400 mb-[50px]">
