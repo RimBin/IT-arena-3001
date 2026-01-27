@@ -1,3 +1,4 @@
+import Header from "@/components/Header";
 import HeroHomepageNeumorphic from "@/components/hero/HeroHomepageNeumorphic";
 import HeroPixelSculpt from "@/components/hero/HeroPixelSculpt";
 import HeroPremium from "@/components/hero/HeroPremium";
@@ -16,6 +17,7 @@ import PricingPlans from "@/components/sections/PricingPlans";
 export default async function Home() {
   return (
     <main className="min-h-screen">
+      <Header />
         {/* Smart City Hero as top-of-homepage */}
         <HeroSmartCity />
         <HeroSmartCityDuplicate />

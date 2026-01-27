@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
-import { useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { usePathname } from "next/navigation";
 import {
   NavigationMenu,
@@ -15,6 +15,7 @@ import { Button } from "@/components/ui/button";
 const LOCALES = ["lt", "en", "sv", "es"] as const;
 
 export default function Header() {
+  const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname() || "/";
   const locale = useMemo(() => {
     const parts = pathname.split("/").filter(Boolean);
@@ -34,59 +35,78 @@ export default function Header() {
     return locale ? `/${locale}${href}` : href;
   };
 
+  useEffect(() => {
+    const onScroll = () => setIsScrolled(window.scrollY > 10);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
-    <header className="sticky top-4 z-40">
-      <div className="mx-auto max-w-7xl px-4">
-        <div className="backdrop-blur-lg bg-white/30 border border-white/20 rounded-2xl shadow-[0_10px_30px_rgba(16,24,40,0.08)] p-3 flex items-center justify-between">
-          <Link href={localize("/")} className="flex items-center gap-2" aria-label="IT Arena — į pradžią">
-            {/* Wordmark SVG matching provided layout */}
-            <Image src="/logos/itarena-wordmark.svg" alt="IT Arena" width={220} height={34} priority />
-          </Link>
-          <NavigationMenu>
-            <NavigationMenuItem href={localize("/")}>Pagrindinis</NavigationMenuItem>
-            <NavigationMenuItem href={localize("/about")}>Apie mus</NavigationMenuItem>
-            <NavigationMenuDropdown label="Paslaugos">
-              <NavigationMenuDropdownGrid>
-                <NavigationMenuDropdownLink
-                  href={localize("/#paslaugos")}
-                  title="Interneto svetainių kūrimas"
-                  description="Reprezentacinės svetainės, landing’ai, individualūs sprendimai"
-                />
-                <NavigationMenuDropdownLink
-                  href={localize("/#paslaugos")}
-                  title="Elektroninių parduotuvių kūrimas"
-                  description="E-komercija, apmokėjimai, pristatymai, integracijos"
-                />
-                <NavigationMenuDropdownLink
-                  href={localize("/#paslaugos")}
-                  title="Gamybos valdymo sistemos"
-                  description="Procesų automatizavimas, ERP/MES integracijos"
-                />
-                <NavigationMenuDropdownLink
-                  href={localize("/#paslaugos")}
-                  title="Programėlių kūrimas"
-                  description="Web ir mobilios programėlės, API, integracijos"
-                />
-                <NavigationMenuDropdownLink
-                  href={localize("/#paslaugos")}
-                  title="SEO LLM"
-                  description="SEO turinys ir struktūra, pritaikyta paieškai ir LLM"
-                />
-                <NavigationMenuDropdownLink
-                  href={localize("/#paslaugos")}
-                  title="Google Ads"
-                  description="Kampanijos, analitika, optimizavimas, konversijos"
-                />
-              </NavigationMenuDropdownGrid>
-            </NavigationMenuDropdown>
-            <NavigationMenuItem href={localize("/blog")}>Tinklaraštis</NavigationMenuItem>
-            <NavigationMenuItem href={localize("/#kontaktai")}>Kontaktai</NavigationMenuItem>
-            <NavigationMenuItem href={localize("/#darbai")}>Darbai</NavigationMenuItem>
-          </NavigationMenu>
-          <div className="flex items-center gap-2">
-            <Button size="sm" variant="default">
+    <header className="fixed top-0 inset-x-0 z-50">
+      <div className={"mx-auto max-w-[1440px] px-6 pb-4 transition-all duration-300 " + (isScrolled ? "pt-0" : "pt-4")}>
+        <div
+          className={
+            "flex justify-between items-center mb-0 transition-all duration-300 " +
+            (isScrolled
+              ? "bg-white/30 backdrop-blur-xl border border-white/40 rounded-2xl shadow-[0_14px_36px_rgba(16,24,40,0.12)]"
+              : "")
+          }
+        >
+          <div className="y-neumo-surface y-pill px-6 py-3 transition-all duration-300">
+            <Link href={localize("/")} className="font-semibold" aria-label="IT Arena — į pradžią">
+              IT Arena
+            </Link>
+          </div>
+
+          <div className="y-neumo-inset y-pill px-8 py-3 flex items-center gap-6 transition-all duration-300">
+            <NavigationMenu>
+              <NavigationMenuItem href={localize("/")}>Pagrindinis</NavigationMenuItem>
+              <NavigationMenuItem href={localize("/about")}>Apie mus</NavigationMenuItem>
+              <NavigationMenuDropdown label="Paslaugos">
+                <NavigationMenuDropdownGrid>
+                  <NavigationMenuDropdownLink
+                    href={localize("/#paslaugos")}
+                    title="Interneto svetainių kūrimas"
+                    description="Reprezentacinės svetainės, landing’ai, individualūs sprendimai"
+                  />
+                  <NavigationMenuDropdownLink
+                    href={localize("/#paslaugos")}
+                    title="Elektroninių parduotuvių kūrimas"
+                    description="E-komercija, apmokėjimai, pristatymai, integracijos"
+                  />
+                  <NavigationMenuDropdownLink
+                    href={localize("/#paslaugos")}
+                    title="Gamybos valdymo sistemos"
+                    description="Procesų automatizavimas, ERP/MES integracijos"
+                  />
+                  <NavigationMenuDropdownLink
+                    href={localize("/#paslaugos")}
+                    title="Programėlių kūrimas"
+                    description="Web ir mobilios programėlės, API, integracijos"
+                  />
+                  <NavigationMenuDropdownLink
+                    href={localize("/#paslaugos")}
+                    title="SEO LLM"
+                    description="SEO turinys ir struktūra, pritaikyta paieškai ir LLM"
+                  />
+                  <NavigationMenuDropdownLink
+                    href={localize("/#paslaugos")}
+                    title="Google Ads"
+                    description="Kampanijos, analitika, optimizavimas, konversijos"
+                  />
+                </NavigationMenuDropdownGrid>
+              </NavigationMenuDropdown>
+              <NavigationMenuItem href={localize("/blog")}>Tinklaraštis</NavigationMenuItem>
+              <NavigationMenuItem href={localize("/#kontaktai")}>Kontaktai</NavigationMenuItem>
+              <NavigationMenuItem href={localize("/#darbai")}>Darbai</NavigationMenuItem>
+            </NavigationMenu>
+          </div>
+
+          <div className="flex items-center">
+            <button type="button" className="y-cta-glow y-focus font-semibold text-slate-900 hover:text-slate-700 transition-colors">
               Susisiekti
-            </Button>
+            </button>
           </div>
         </div>
       </div>

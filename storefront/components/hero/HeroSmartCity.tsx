@@ -104,41 +104,9 @@ const HeroSmartCity: FC = () => {
   }, [mounted]);
 
   return (
-    <div className="y-neumo-hero-grad w-full min-h-screen flex items-center lg:items-start justify-center px-8 pb-8 pt-10 lg:pt-6 font-sans relative overflow-hidden text-slate-900">
+    <div className="y-neumo-hero-grad w-full min-h-screen flex items-center lg:items-start justify-center px-8 pb-8 pt-[80px] lg:pt-[80px] font-sans relative overflow-hidden text-slate-900">
       <div className="w-full max-w-[1440px] mx-auto relative z-10">
         
-        {/* Top Navigation - Raised */}
-        <div
-          className={
-            "flex justify-between items-center mb-12 " +
-            (mounted ? "y-reveal" : "")
-          }
-          style={
-            mounted
-              ? ({ ['--y-delay' as any]: '0ms' } as React.CSSProperties)
-              : undefined
-          }
-        >
-          <div className="y-neumo-surface y-pill px-6 py-3 transition-all duration-300">
-            <span className="font-semibold">IT Arena</span>
-          </div>
-
-          <div className="y-neumo-inset y-pill px-8 py-3 flex items-center gap-6 transition-all duration-300">
-            <Link href="/" className="y-focus text-slate-700 hover:text-slate-900 text-sm font-semibold transition-colors">Pagrindinis</Link>
-            <Link href="/about" className="y-focus text-slate-700 hover:text-slate-900 text-sm font-medium transition-colors">Apie mus</Link>
-            <Link href="/#paslaugos" className="y-focus text-slate-700 hover:text-slate-900 text-sm font-medium transition-colors">Paslaugos</Link>
-            <Link href="/blog" className="y-focus text-slate-700 hover:text-slate-900 text-sm font-medium transition-colors">Tinklaraštis</Link>
-            <Link href="/#kontaktai" className="y-focus text-slate-700 hover:text-slate-900 text-sm font-medium transition-colors">Kontaktai</Link>
-            <Link href="/#darbai" className="y-focus text-slate-700 hover:text-slate-900 text-sm font-medium transition-colors">Darbai</Link>
-          </div>
-
-          <div className="flex items-center">
-            <button type="button" className="y-cta-glow y-focus font-semibold text-slate-900 hover:text-slate-700 transition-colors">
-              Susisiekti
-            </button>
-          </div>
-        </div>
-
         <div
           className={
             "grid grid-cols-12 gap-6 items-stretch " +
