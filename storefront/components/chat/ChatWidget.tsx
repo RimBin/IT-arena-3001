@@ -78,11 +78,12 @@ export default function ChatWidget() {
       {!open ? (
         <button
           type="button"
-          className="y-cta-glow y-focus text-slate-900 font-semibold"
+          className="y-cta-glow y-focus inline-flex items-center gap-3 text-slate-900 font-semibold"
           onClick={() => setOpen(true)}
           aria-label="Atidaryti pokalbį"
         >
           Pokalbis
+          <span aria-hidden className="y-cta-icon">→</span>
         </button>
       ) : (
         <div className="y-neumo-surface-lg w-[360px] overflow-hidden">

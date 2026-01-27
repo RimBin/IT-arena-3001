@@ -1,6 +1,6 @@
 "use client";
 
-import { ExternalLink, TrendingUp, Clock, Award } from "lucide-react";
+import { ArrowUpRight, TrendingUp, Clock, Award } from "lucide-react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 
@@ -88,8 +88,8 @@ export default function CaseStudies() {
                 </div>
                 
                 {/* External Link Icon */}
-                <div className="absolute top-4 right-4 w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <ExternalLink className="w-5 h-5 text-white" />
+                <div className="absolute top-4 right-4 w-10 h-10 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white/90 border border-purple-200 shadow-[0_8px_20px_rgba(124,58,237,0.18)]">
+                  <ArrowUpRight className="w-5 h-5 text-purple-600" />
                 </div>
               </div>
 

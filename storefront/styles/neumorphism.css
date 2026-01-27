@@ -64,6 +64,31 @@
   background:linear-gradient(135deg, var(--neo-surface-soft) 0%, var(--neo-bg) 60%, #dde3ef 100%);
 }
 
+/* Tech dots + lines overlay for hero/sections */
+.y-neumo-tech-bg{
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+.y-neumo-tech-bg::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background-image:
+    radial-gradient(rgba(120,130,180,0.18) 1px, transparent 1px),
+    linear-gradient(to right, rgba(180,190,220,0.18) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(180,190,220,0.18) 1px, transparent 1px);
+  background-size: 18px 18px, 40px 40px, 40px 40px;
+  opacity: 0.6;
+  mask-image: radial-gradient(ellipse at 50% 40%, #000 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+.y-neumo-tech-bg > *{
+  position: relative;
+  z-index: 1;
+}
+
 /* Text gradient helper (reuses existing CTA palette) */
 .y-text-grad-violet{
   background-image:linear-gradient(135deg, #7c3aed 0%, #a855f7 50%, #ec4899 100%);
@@ -242,6 +267,27 @@
   animation: cta-glow-sweep 6s linear infinite;
   opacity: 0.9;
   z-index: -1;
+}
+
+.y-cta-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 9999px;
+  border: 1px solid rgba(124, 58, 237, 0.32);
+  background: #ffffff;
+  color: #7c3aed;
+  box-shadow: 0 6px 14px rgba(124, 58, 237, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  font-size: 14px;
+  line-height: 1;
+}
+
+.y-cta-glow:hover .y-cta-icon {
+  transform: translateX(2px);
+  box-shadow: 0 8px 18px rgba(124, 58, 237, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.9);
 }
 
 @property --cta-angle {

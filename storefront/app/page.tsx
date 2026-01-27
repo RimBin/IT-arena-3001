@@ -2,6 +2,7 @@ import HeroHomepageNeumorphic from "@/components/hero/HeroHomepageNeumorphic";
 import HeroPixelSculpt from "@/components/hero/HeroPixelSculpt";
 import HeroPremium from "@/components/hero/HeroPremium";
 import HeroSmartCity from "@/components/hero/HeroSmartCity";
+import HeroSmartCityDuplicate from "@/components/sections/HeroSmartCityDuplicate";
 import ServicesGrid from "@/components/sections/ServicesGrid";
 import BenefitsNeuro from "@/components/sections/BenefitsNeuro";
 import WhyUs from "@/components/sections/WhyUs";
@@ -17,6 +18,7 @@ export default async function Home() {
     <main className="min-h-screen">
         {/* Smart City Hero as top-of-homepage */}
         <HeroSmartCity />
+        <HeroSmartCityDuplicate />
         
         {/* Pixel Sculpt Hero (Disabled) */}
         {/* <HeroPixelSculpt /> */}
