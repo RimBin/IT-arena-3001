@@ -110,7 +110,7 @@ const HeroSmartCity: FC = () => {
         
         <div
           className={
-            "grid grid-cols-12 gap-6 items-stretch " +
+            "grid grid-cols-12 gap-6 items-stretch min-h-[625px] " +
             (mounted ? "" : "")
           }
         >
@@ -118,7 +118,7 @@ const HeroSmartCity: FC = () => {
           {/* Left Sidebar - Raised Cards */}
           <div
             className={
-              "col-span-12 md:col-span-3 lg:col-span-2 space-y-6 h-full flex flex-col "
+              "col-span-12 md:col-span-3 lg:col-span-2 space-y-6 h-full min-h-[625px] flex flex-col "
             }
           >
             
@@ -240,7 +240,7 @@ const HeroSmartCity: FC = () => {
           {/* Main Content Area - Large Raised Card */}
           <div
             className={
-              "col-span-12 md:col-span-9 lg:col-span-10 h-full "
+              "col-span-12 md:col-span-9 lg:col-span-10 h-full min-h-[625px] "
             }
           >
             <div
@@ -251,7 +251,7 @@ const HeroSmartCity: FC = () => {
                   : undefined
               }
             >
-              <div className="y-neumo-surface-lg p-12 relative overflow-hidden transition-all duration-300 min-h-[600px] h-full flex flex-col justify-between">
+              <div className="y-neumo-surface-lg p-12 relative overflow-hidden transition-all duration-300 min-h-[625px] h-full flex flex-col justify-between">
               {/* Title */}
               <div>
                 <h1

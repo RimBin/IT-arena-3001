@@ -4,7 +4,12 @@ import { buttonClasses } from "@/components/ui/button";
 export default function HeroSmartCityDuplicate() {
   return (
     <section className="y-neumo-hero-grad y-neumo-tech-bg w-full py-16 lg:py-20 font-sans text-slate-900 relative overflow-hidden">
-      <div className="w-full max-w-[1440px] mx-auto px-6 md:px-8">
+      <div
+        className="absolute inset-0 bg-cover bg-center opacity-100"
+        style={{ backgroundImage: "url('/images/background.webp')" }}
+        aria-hidden="true"
+      />
+      <div className="w-full max-w-[1440px] mx-auto px-6 md:px-8 relative z-10">
         <div className="grid grid-cols-12 gap-6 items-stretch">
           {/* Left metrics */}
           <div className="col-span-12 md:col-span-4 lg:col-span-3 xl:col-span-2 flex flex-col gap-6">
