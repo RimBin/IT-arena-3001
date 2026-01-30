@@ -59,16 +59,13 @@ export default function HeroSmartCityDuplicate() {
               <div className="grid grid-cols-12 gap-8 items-start flex-1">
                 <div className="col-span-12 lg:col-span-7">
                   <h2 className="heading-black text-slate-900 text-[2.1rem] sm:text-[3rem] lg:text-[4.1rem] leading-[1.08] font-extrabold font-mono tracking-[0.06em]">
-                    Skaitmeniniai ir AI
+                    Kodėl jūsų svetainė nepritraukia klientų —
                     <br />
-                    sprendimai
-                    <br />
-                    <span className="block italic y-text-grad-violet">naujos kartos verslui.</span>
+                    <span className="block italic y-text-grad-violet">net jei reklama veikia</span>
                   </h2>
 
                   <p className="text-slate-600 text-base md:text-lg leading-relaxed mt-8 max-w-2xl">
-                    Kuriame verslo sistemas, el. parduotuves, svetaines ir automatizuotas AI bei reklamos valdymo
-                    sistemas, kurios didina pardavimus ir efektyvina procesus.
+                    Per 7 minutes parodome, kur prarandami pinigai ir kaip tai sutvarkyti.
                   </p>
 
                   <div className="mt-10">
@@ -76,7 +73,7 @@ export default function HeroSmartCityDuplicate() {
                       href="/#kontaktai"
                       className={buttonClasses({ variant: "cta", size: "md", className: "gap-3" })}
                     >
-                      Susisiekti <span aria-hidden className="y-cta-icon">→</span>
+                      Atlikti nemokamą diagnostiką <span aria-hidden className="y-cta-icon">→</span>
                     </Link>
                   </div>
                 </div>
@@ -94,8 +91,7 @@ export default function HeroSmartCityDuplicate() {
                     </div>
 
                     <p className="text-slate-600 leading-relaxed mt-5">
-                      Kuriame verslo sistemas, el. parduotuves, svetaines ir automatizuotas AI bei reklamos valdymo
-                      sistemas, kurios didina pardavimus ir efektyvina procesus.
+                      Per 7 minutes parodome, kur prarandami pinigai ir kaip tai sutvarkyti.
                     </p>
 
                     <div className="mt-8">
@@ -103,7 +99,7 @@ export default function HeroSmartCityDuplicate() {
                         href="/#kontaktai"
                         className={buttonClasses({ variant: "cta", size: "md", className: "gap-3 w-full justify-center" })}
                       >
-                        Susisiekti <span aria-hidden className="y-cta-icon">→</span>
+                        Atlikti nemokamą diagnostiką <span aria-hidden className="y-cta-icon">→</span>
                       </Link>
                     </div>
                   </div>

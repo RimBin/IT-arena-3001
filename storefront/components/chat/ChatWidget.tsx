@@ -77,17 +77,25 @@ export default function ChatWidget() {
   return (
     <div className="fixed bottom-6 right-6 z-50">
       {!open ? (
-          <Button
+          <button
             type="button"
-            variant="cta"
-            size="md"
-            className="gap-3"
             onClick={() => setOpen(true)}
             aria-label="Atidaryti pokalbį"
+            className="y-neumo-surface y-pill w-12 h-12 flex items-center justify-center shadow-[0_10px_24px_rgba(78,86,108,0.18)] text-slate-700 hover:text-slate-900 transition-colors"
           >
-            Pokalbis
-            <span aria-hidden className="y-cta-icon">→</span>
-          </Button>
+            <svg
+              aria-hidden
+              viewBox="0 0 24 24"
+              className="h-5 w-5"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.8"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M21 12c0 4.418-4.03 8-9 8-1.186 0-2.317-.195-3.347-.55L3 20l1.1-3.1C3.41 15.73 3 14.4 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+            </svg>
+          </button>
       ) : (
         <div className="y-neumo-surface-lg w-[360px] overflow-hidden">
           <div className="flex items-center justify-between gap-3 px-4 py-3">

@@ -265,9 +265,8 @@ const HeroSmartCity: FC = () => {
                       : undefined
                   }
                 >
-                  Skaitmeniniai ir AI<br />
-                  sprendimai<br />
-                  <span className="block italic y-text-grad-violet">naujos kartos verslui.</span>
+                  Kodėl jūsų svetainė nepritraukia klientų —<br />
+                  <span className="block italic y-text-grad-violet">net jei reklama veikia</span>
                 </h1>
 
                 {/* CTA Button — moved to bottom area (see below) */}
@@ -300,13 +299,13 @@ const HeroSmartCity: FC = () => {
 
                   <div className="y-neumo-inset px-8 py-4 transition-all duration-300 group cursor-default">
                     <p className="text-slate-900 text-lg md:text-xl leading-relaxed md:max-w-3xl group-hover:text-slate-700 group-hover:underline underline-offset-8 transition-colors">
-                      Kuriame verslo sistemas, el. parduotuves, svetaines ir automatizuotas AI bei reklamos valdymo sistemas, kurios didina pardavimus ir efektyvina procesus.
+                      Per 7 minutes parodome, kur prarandami pinigai ir kaip tai sutvarkyti.
                     </p>
                   </div>
 
                   <div className="md:pt-1">
                     <Button type="button" variant="cta" size="md" className="gap-3">
-                      Susisiekti
+                      Atlikti nemokamą diagnostiką
                       <span aria-hidden className="y-cta-icon">→</span>
                     </Button>
                   </div>
